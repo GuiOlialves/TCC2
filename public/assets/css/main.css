@@ -1,0 +1,255 @@
+/* Em public/assets/css/main.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    /* Suas cores base */
+    --blue-900: #0F172A;
+    --blue-800: #1E293B;
+    --blue-400: #479bd8;
+
+    /* Suas cores neutras */
+    --gray-400: #94A3B8;
+    --gray-500: #6B7280; /* Cor para ícones inativos e texto secundário */
+    --gray-200: #E2E8F0;
+    --white: #F8FAFC;
+
+    /* Suas cores de feedback */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Cor de destaque para botões e links */
+    --button: #479bd8;
+}
+
+body {
+    background-color: var(--blue-900);
+    color: var(--white);
+    display: flex; /* Garante que o layout principal ocupe a tela toda */
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+
+/* ================================================= */
+/* === ESTRUTURA PRINCIPAL DO LAYOUT === */
+/* ================================================= */
+
+/* A tag <main> agora é nosso container principal */
+main.container-principal {
+    display: flex;
+    width: 100%;
+}
+
+.conteudo-principal {
+    flex-grow: 1; /* Faz esta área ocupar todo o espaço restante */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Garante que o conteúdo das páginas (kanban, tabelas) não transborde */
+.kanban-board, .stock-page, .financial-dashboard, .reports-page {
+    flex-grow: 1;
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for maior que a tela */
+    padding: 25px;
+}
+
+
+/* ================================================= */
+/* === NOVOS ESTILOS PARA SIDEBAR E TOP BAR === */
+/* ================================================= */
+
+/* --- BARRA LATERAL (SIDEBAR) --- */
+.side-bar {
+    width: 90px;
+    height: 100vh;
+    background-color: var(--blue-800);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+    border-right: 1px solid var(--blue-900);
+    padding: 15px 0;
+    flex-shrink: 0;
+}
+
+/* Efeito de expansão ao passar o mouse */
+.side-bar:hover {
+    width: 260px;
+}
+
+/* Logo na Sidebar */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.sidebar-logo .logo-img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+    object-fit: contain; /* <-- ADICIONE ESTA LINHA */
+}
+
+.sidebar-logo:hover .logo-img {
+    transform: rotate(15deg);
+}
+
+.sidebar-logo .logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s 0.1s ease-in-out; /* Adiciona um pequeno delay */
+}
+
+.side-bar:hover .logo-text {
+    opacity: 1;
+}
+
+/* Navegação da Sidebar */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 28px; /* Alinha o ícone com a logo */
+    text-decoration: none;
+    color: var(--gray-400);
+    position: relative;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(71, 155, 216, 0.1);
+    color: var(--white);
+}
+
+/* Indicador de item ativo (barra à esquerda) */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background-color: var(--button);
+    border-radius: 0 4px 4px 0;
+    transition: height 0.2s ease;
+}
+
+.nav-item:hover::before {
+    height: 70%;
+}
+
+.nav-item.active {
+    background-color: rgba(71, 155, 216, 0.1);
+    color: var(--white);
+}
+
+.nav-item.active::before {
+    height: 100%;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.nav-item .nav-text {
+    opacity: 0;
+    transition: opacity 0.2s 0.1s ease-in-out; /* Adiciona um pequeno delay */
+    font-weight: 500;
+}
+
+.side-bar:hover .nav-text {
+    opacity: 1;
+}
+
+/* --- BARRA SUPERIOR (TOP BAR) --- */
+.top-bar {
+    min-height: 80px;
+    background-color: var(--blue-800);
+    border-bottom: 1px solid var(--blue-900);
+    padding: 0 25px;
+    flex-shrink: 0; /* Impede que a barra encolha */
+}
+
+.top-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.search-placeholder {
+    flex-grow: 1;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-name {
+    display: block;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.user-role {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray-400);
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--button);
+}
+
+/* Estilo para botão de logout, caso implemente */
+.logout-btn {
+    color: var(--gray-400);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.logout-btn:hover {
+    color: var(--danger);
+}

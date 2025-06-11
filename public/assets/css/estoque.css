@@ -1,0 +1,135 @@
+/* Estilo geral da página de estoque */
+.stock-page {
+    padding: 25px;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--gray-200);
+}
+
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Botão de Adicionar Item */
+.add-item-btn {
+    background-color: var(--button);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-item-btn:hover {
+    background-color: #357ab8; /* Tom mais escuro do azul */
+    transform: translateY(-2px);
+}
+
+.add-item-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Container da Tabela */
+.table-container {
+    background-color: var(--blue-800);
+    border-radius: 12px;
+    overflow-x: auto; /* Garante scroll horizontal em telas pequenas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tabela de Estoque */
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--white);
+}
+
+.stock-table th, .stock-table td {
+    padding: 16px 20px;
+    text-align: left;
+    white-space: nowrap; /* Impede que o texto quebre linha */
+}
+
+/* Cabeçalho da Tabela */
+.stock-table thead {
+    background-color: var(--blue-900);
+}
+
+.stock-table th {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gray-400);
+}
+
+/* Corpo da Tabela */
+.stock-table tbody tr {
+    border-bottom: 1px solid var(--blue-900);
+    transition: background-color 0.2s ease;
+}
+
+.stock-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.stock-table tbody tr:hover {
+    background-color: #2a3a55; /* Um tom um pouco mais claro de azul */
+}
+
+/* Estilo para a tag de categoria */
+.category-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Botão de Ação (Editar) */
+.action-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.action-btn svg {
+    stroke: var(--gray-400);
+    transition: stroke 0.2s ease;
+}
+
+.action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn:hover svg {
+    stroke: var(--white);
+}
+
+/* Mensagem de estado vazio */
+.empty-state {
+    text-align: center;
+    color: var(--gray-400);
+    font-style: italic;
+    padding: 40px;
+}
